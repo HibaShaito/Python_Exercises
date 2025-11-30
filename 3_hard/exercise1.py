@@ -100,20 +100,41 @@ class ExpenseManager:
 if __name__ == "__main__":
     manager = ExpenseManager()
 
-    # Load existing CSV if you want
+    # Load existing data if available
     manager.load_from_csv("3_hard/data.csv")
 
-    # Add new expenses
-    e1 = Expense("cheese", 40, "17-2-2025")
-    e2 = Expense("milk", 80, "12-5-2025")
-    e3 = Expense("cheese", 90, "18-2-2025")
+    while True:
+        print("\n--- Expense Tracker ---")
+        print("1. Add Expense")
+        print("2. View Expenses")
+        print("3. Category Summary")
+        print("4. Exit")
+        choice = input("Choose an option: ")
 
-    manager.add_expense(e1)
-    manager.add_expense(e2)
-    manager.add_expense(e3)
+        if choice == "1":
+            category = input("Enter category: ")
+            amount = float(input("Enter amount: "))
+            date = input("Enter date (DD-MM-YYYY): ")
 
-    manager.category_summary()
-    manager.view_expenses()
+            expense = Expense(category, amount, date)
+            manager.add_expense(expense)
 
-    # Save updated CSV
-    manager.save_to_csv("3_hard/data.csv")
+            print("Expense added successfully!")
+            manager.save_to_csv("3_hard/data.csv")
+
+        elif choice == "2":
+            print("\n--- All Expenses ---")
+            manager.view_expenses()
+
+        elif choice == "3":
+            print("\n--- Category Summary ---")
+            manager.category_summary()
+
+
+        elif choice == "4":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice, try again.")
+
