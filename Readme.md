@@ -1,0 +1,2 @@
+This repository contains my solutions to the Python exercises from the Accelerator course, following the original exercises provided here:
+https://github.com/larawehbe/TheAIEngineers-Notebooks/tree/master/Python101/exercises
